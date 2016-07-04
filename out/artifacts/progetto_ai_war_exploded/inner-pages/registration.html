@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="iftttApp">
+<head>
+    <meta charset="UTF-8">
+    <title>registration</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../css/registration.css">
+<body>
+
+    <form role="form" name="form" ng-controller="registrationController">
+        <div class="container">
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="username" class="form-control" id="username" placeholder="username" autofocus ng-model="user.name" required>
+            </div>
+            <div novalidate class="css-form">
+
+                <div class="form-group" ng-form="pwd1">
+                    <label>Password:</label>
+                    <input type="password" class="form-control" id="pwd1" placeholder="insert your password" required="" ng-model="user.pass1">
+                    <br>
+                    <input type="password" class="form-control" id="pwd2" placeholder="retype the password" required="" ng-model="user.pass2" >
+                </div>
+
+                <div class="form-group">
+                    <label>Email address:</label>
+                    <input type="email" class="form-control" id="email" placeholder="insert your email" ng-model="user.email" required="" name="uEmail" >
+                    <div ng-show="form.$submitted || form.uEmail.$touched">
+                        <span ng-show="form.uEmail.$error.required" style="color: #b81900">The email is mandatory</span>
+                        <span ng-show="form.uEmail.$error.email"   style="color: #b81900">This is not a valid email</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-default" ng-click="registrationCheck(user)">Submit</button>
+            </div>
+        </div>
+
+
+
+    </form>
+
+
+</body>
+</html>
