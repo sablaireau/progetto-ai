@@ -44,19 +44,59 @@ iftttApp.controller('homeController', ['$scope', '$rootScope', '$routeParams', '
 
 
 iftttApp.controller('registrationController', ['$scope', '$rootScope', '$routeParams', '$http', '$resource',
+    function ($scope, $rootscope, $routeParams, $http, $resource) {
+        $scope.registration = {};
+        /*
+         $scope.registrationCheck = function(user)
+         {
+         $scope.registration = angular.copy(user);
+         alert($scope.registration.pass1 +  user.pass1);
+
+         }
+         */
+
+    }])
+
+
+iftttApp.controller('yWeatherController', ['$scope', '$rootScope', '$routeParams', '$http', '$resource',
     function ($scope, $rootscope, $routeParams, $http, $resource)
     {
-            $scope.registration = {};
-            $scope.registrationCheck = function(user)
-            {
-                $scope.registration = angular.copy(user);
-                alert($scope.registration.pass1 +  user.pass1);
+
+        var locationUser= {"_id":707860,"name":"Hurzuf","country":"UA","coord":{"lon":34.283333,"lat":44.549999}};
+
+        $scope.WeatherPost = function(id)
+        {
+            $scope.idButtonx = angular.copy(id);
+            alert("Ciao");
+
+            /*
+            $.ajax({
+                url: "/TestServletSito",
+                data: locationUser,
+                dataType: "json"
+                //success: alet("o.k.")
+            });
+            */
+            //$http.post('/someUrl', data, config).then(successCallback, errorCallback);
 
 
-            }
+            // Assign handlers immediately after making the request,
+            // and remember the jqxhr object for this request
+            var jqxhr = $.post( "/TestServletSito", function() {
+                alert( "success" );
+            })
+                .done(function() {
+                    alert( "second success" );
+                })
+                .fail(function() {
+                    alert( "error" );
+                })
+                .always(function() {
+                    alert( "finished" );
+                });
 
-
-
+        }
 
 
     }]);
+
